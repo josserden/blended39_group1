@@ -1,0 +1,19 @@
+{{#each this}}
+
+  <div class='col p-3'>
+    <div class='shadow-sm rounded'>
+      <div class='overflow-hidden' style='height: 250px;'>
+        <img
+          class='img-fluid'
+          src={{src.medium}}
+          alt='photo of'
+          {{photographer}}
+        />
+      </div>
+      <div class='p-2'>
+        <p class='h6 m-0'>{{photographer}}</p>
+      </div>
+    </div>
+  </div>
+
+{{/each}}
