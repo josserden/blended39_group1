@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://josserden.github.io/blended39_group1",
   "scripts": {
-    "dev": "parcel src/*.html --open",
+    "dev": "parcel src/*.html --open -p 7777",
     "build": "parcel build src/*.html --public-url /blended39_group1/"
   },
   "repository": {
