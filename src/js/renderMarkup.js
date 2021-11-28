@@ -1,3 +1,3 @@
-export const renderMarkup = (ref, template, data) => {
+export const renderMarkup = ({ ref, template, data }) => {
   ref.insertAdjacentHTML('beforeend', template(data));
 };
