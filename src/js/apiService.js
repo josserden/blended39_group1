@@ -1,20 +1,40 @@
 import axios from 'axios';
 
-const AUTH_TOKEN = '563492ad6f917000010000017177ac82ad294f609aa250f88e62125c';
-axios.defaults.baseURL = 'https://api.pexels.com/v1/search';
-axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+const API_KEY = '16085264-71307d3f0a6fd2ec26a379ecb';
+axios.defaults.baseURL = 'https://pixabay.com/api/';
 
-// const options = {
-//   headers: {
-//     Authorization: AUTH_TOKEN,
-//   },
-// };
+export default {
+  searchQuery: '',
+  page: 1,
+  perPage: 12,
 
-export const apiSearch = query => {
-  return axios
-    .get(`?query=${query}&per_page=15&orientation=landscape&size=small`)
-    .then(response => {
-      return response.data.photos;
-    })
-    .catch(err => console.error(error));
+  async fetchImage() {
+    try {
+      let response = await axios.get(
+        `?image_type=photo&orientation=horizontal&q=${this.query}&page=${this.page}&per_page=${this.perPage}&key=${API_KEY}`,
+      );
+      let data = await response.data;
+      this.incrementPage();
+
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  incrementPage() {
+    this.page += 1;
+  },
+
+  resetPage() {
+    this.page = 1;
+  },
+
+  get query() {
+    return this.searchQuery;
+  },
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  },
 };
