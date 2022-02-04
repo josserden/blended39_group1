@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
-import { ImageApi } from '../services/image-api';
 import axios from 'axios';
 
 import Container from './Container';
